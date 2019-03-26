@@ -5,7 +5,7 @@
     <v-like class="like" bind:like="handleLike" like="{{likeStatus}}" count="{{favNums}}"/>
   </view>
   <v-movie hidden="{{classicData.type != 100}}" img="{{classicData.image}}" content="{{classicData.content}}"/>
-  <v-music hidden="{{classicData.type != 200}}" img="{{classicData.image}}" content="{{classicData.content}}" src="{{classicData.url}}" title="{{classicData.title}}"/>
+  <v-music wx:if="{{classicData.type == 200}}" img="{{classicData.image}}" content="{{classicData.content}}" src="{{classicData.url}}" title="{{classicData.title}}"/>
   <v-essay hidden="{{classicData.type != 300}}" img="{{classicData.image}}" content="{{classicData.content}}"/>
   <v-navi bind:left="onNext" bind:right="onPrev" class="navi" title="{{classicData.title}}" first="{{first}}" last="{{last}}"/>
 </view>
