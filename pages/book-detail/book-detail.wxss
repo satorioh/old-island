@@ -1,0 +1,86 @@
+/* pages/book-detail/book-detail.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  background-color: #F5F5F5;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  padding: 40rpx 0;
+  margin-bottom: 20rpx;
+}
+
+.header image {
+  width: 204rpx;
+  height: 288rpx;
+  box-shadow: 2px 2px 3px #e3e3e3;
+}
+
+.title {
+  margin: 20rpx 0;
+}
+
+.author {
+  color: #ACACAC;
+  font-size: 28rpx;
+}
+
+.comments {
+  background-color: #fff;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+}
+
+.common-title {
+  text-align: center;
+  margin-bottom: 20rpx;
+  font-size: 30rpx;
+}
+
+.comments-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.comments-wrap v-tag {
+  margin-right: 15rpx;
+  margin-bottom: 10rpx;
+}
+
+.num {
+  margin-left: 10rpx;
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+.summary {
+  background-color: #fff;
+  padding: 30rpx 50rpx;
+  margin-bottom: 20rpx;
+}
+
+.summary .text {
+  font-size: 28rpx;
+  color:#787878;
+  text-indent: 56rpx;
+}
+
+.info {
+  background-color: #fff;
+  padding: 30rpx 50rpx;
+}
+
+.info-item {
+  font-size: 28rpx;
+  color:#787878;
+  margin-bottom: 10rpx;
+}
+
+.label {
+  display: inline-block;
+  width: 100rpx;
+}

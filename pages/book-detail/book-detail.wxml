@@ -1,0 +1,53 @@
+<!--pages/book-detail/book-detail.wxml-->
+<view class="container">
+  <view class="header">
+    <image src="{{book.image}}"></image>
+    <text class="title">{{book.title}}</text>
+    <text class="author">{{book.author}}</text>
+  </view>
+  <view class="comments">
+    <view class="common-title">
+      <text>短评</text>
+    </view>
+    <view class="comments-wrap">
+      <block wx:for="{{comments}}" wx:key="">
+        <v-tag text="{{item.content}}">
+          <text slot="after" class="num">{{'+' + item.nums}}</text>
+        </v-tag>
+      </block>
+    </view>
+  </view>
+  <view class="summary">
+    <view class="common-title">
+      <text>内容简介</text>
+    </view>
+    <text class="text">{{book.summary}}</text>
+  </view>
+  <view class="info">
+    <view class="common-title">
+      <text>书本信息</text>
+    </view>
+    <view class="info-wrap">
+      <view class="info-item">
+        <text class="label">出版社</text>
+        <text>{{book.publisher}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">出版年</text>
+        <text>{{book.pubdate}}</text>
+      </view>
+      <view class="info-item">
+        <text class="label">页数</text>
+        <text>{{book.pages}}</text>
+      </view>
+    </view>
+    <view class="info-item">
+      <text class="label">定价</text>
+      <text>{{book.price}}</text>
+    </view>
+    <view class="info-item">
+      <text class="label">装帧</text>
+      <text>{{book.binding}}</text>
+    </view>
+  </view>
+</view>
