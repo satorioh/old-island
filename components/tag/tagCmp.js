@@ -6,6 +6,7 @@ Component({
   options:{
     multipleSlots: true,
   },
+  externalClasses:['tag-class'],
   properties: {
     text:String,
   },
@@ -21,6 +22,10 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    onTap(e){
+      this.triggerEvent('tapping',{
+        text:this.properties.text
+      })
+    }
   }
 })

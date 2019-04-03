@@ -1,3 +1,4 @@
+<wxs module="util" src="../../util/filter.wxs"></wxs>
 <!--pages/book-detail/book-detail.wxml-->
 <view class="container">
   <view class="header">
@@ -8,10 +9,11 @@
   <view class="comments">
     <view class="common-title">
       <text>短评</text>
+      <text class="shadow" wx:if="{{comments.length == 0}}">还没有短评</text>
     </view>
     <view class="comments-wrap">
-      <block wx:for="{{comments}}" wx:key="">
-        <v-tag text="{{item.content}}">
+      <block wx:for="{{util.limit(comments, 10)}}" wx:key="">
+        <v-tag text="{{item.content}}" tag-class="{{tool.highLight(index)}}">
           <text slot="after" class="num">{{'+' + item.nums}}</text>
         </v-tag>
       </block>
@@ -21,7 +23,7 @@
     <view class="common-title">
       <text>内容简介</text>
     </view>
-    <text class="text">{{book.summary}}</text>
+    <text class="text" decode="{{true}}">{{util.format(book.summary)}}</text>
   </view>
   <view class="info">
     <view class="common-title">
@@ -51,3 +53,45 @@
     </view>
   </view>
 </view>
+
+<view class="short-comments" wx:if="{{!posting}}">
+  <view class="comments-input" bind:tap="onFakePost">
+    <text>输入短评</text>
+  </view>
+  <view class="like-container">
+    <v-like class="like" bind:like="handleLike" like="{{likeStatus}}" count="{{likeCount}}"/>
+  </view>
+</view>
+
+<view class="posting-container" wx:if="{{posting}}">
+  <view class="post-header">
+    <text wx:if="{{comments.length > 0}}">仅可点击标签+1</text>
+    <text wx:else>暂无短评</text>
+    <text class="cancel" bind:tap="onCancel">取消</text>
+  </view>
+  <view class="comment-container">
+    <block wx:for="{{util.limit(comments, 3)}}" wx:key="">
+      <v-tag bind:tapping="onPost" text="{{item.content}}" tag-class="{{tool.highLight(index)}}">
+        <text slot="after" class="num">{{'+' + item.nums}}</text>
+      </v-tag>
+    </block>
+  </view>
+  <input bindconfirm="onPost" class="post" placeholder="短评最多12个字"/>
+</view>
+
+<v-mask wx:if="{{posting}}"></v-mask>
+
+<wxs module="tool">
+  var highLight = function(index){
+    if (index==0){
+    return 'ex-tag1'
+    } else if(index==1){
+    return 'ex-tag2'
+    } else {
+    return ''
+    }
+  }
+  module.exports = {
+    highLight:highLight
+  }
+</wxs>
