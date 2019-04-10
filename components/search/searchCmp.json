@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "v-tag": "/components/tag/tagCmp",
+    "v-book": "/components/book/bookCmp",
+    "v-loading": "/components/loading/loadingCmp"
+  }
+}
