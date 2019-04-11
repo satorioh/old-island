@@ -47,26 +47,28 @@ Component({
    */
   methods: {
     onCancel(e){
+      this.initialize()
       this.triggerEvent('cancel',{},{})
     },
 
     onConfirm(e){
       this._showResult()
       this._showLoadingCenter()
-      this.initialize()
+      // this.initialize()
       const q = e.detail.value || e.detail.text
+      this.setData({
+        q
+      })
       bookModel.search(0, q).then(res =>{
           this.setMoreData(res.books)
           this.setTotal(res.total)
-          this.setData({
-            q
-          })
           keywordModel.addToHistory(q)
           this._hideLoadingCenter()
         })
     },
 
     onDelete(e){
+      this.initialize()
       this._closeResult()
     },
 
@@ -74,20 +76,20 @@ Component({
       if(!this.data.q){
         return
       }
-      if(this._isLocked()){
+      if(this.isLocked()){
         return
       }
       console.log('load more')
       // const length = this.data.dataArray.length
       if(this.hasMore()){
         // this.data.loading = true
-        this._locked()
+        this.locked()
         bookModel.search(this.getCurrentStart(), this.data.q).then(res =>{
           this.setMoreData(res.books)
           // this.data.loading = false
-          this._unLocked()
+          this.unLocked()
         }, ()=>{
-          this._unLocked()
+          this.unLocked()
         })
       }
     },
@@ -100,25 +102,8 @@ Component({
 
     _closeResult(){
       this.setData({
-        searching: false
-      })
-    },
-
-    _isLocked(){
-      return this.data.loading
-    },
-
-    _locked(){
-      // this.data.loading = true
-      this.setData({
-        loading:true
-      })
-    },
-
-    _unLocked(){
-      // this.data.loading = false
-      this.setData({
-        loading:false
+        searching: false,
+        q:''
       })
     },
 
