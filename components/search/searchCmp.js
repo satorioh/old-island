@@ -26,7 +26,6 @@ Component({
     hotWords:[],
     searching:false,
     q:'',
-    loading:false,
     loadingCenter:false,
   },
 

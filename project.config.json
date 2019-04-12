@@ -37,16 +37,8 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
-			"list": [
-				{
-					"id": 0,
-					"name": "book",
-					"pathName": "pages/book/book",
-					"query": "",
-					"scene": null
-				}
-			]
+			"current": -1,
+			"list": []
 		}
 	}
 }
